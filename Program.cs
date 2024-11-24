@@ -1,14 +1,12 @@
 ﻿static void Menu()
 {
-
-
     Console.WriteLine(
         @"
         Bem vindo ao seu Cronômetro!
 
         Digite o número correspondente a qual ação deseja executar:
 
-        1 - Cronômetro infinito (Em breve)
+        1 - Cronômetro infinito
         2 - Cronometro de tempo específico
         3 - Sair"
     );
@@ -17,6 +15,13 @@
 
     switch (option)
     {
+        case "1":
+            {
+                Console.Clear();
+                Start();
+
+                break;
+            }
         case "2":
             {
                 Console.Clear();
@@ -50,6 +55,31 @@
                 break;
 
             }
+    }
+}
+
+static void Start()
+{
+    int startSec = -1;
+    int startMin = 0;
+
+    while (true)
+    {
+        Console.Clear();
+        startSec++;
+
+        if (startSec == 60)
+        {
+            startSec = 0;
+            startMin++;
+        }
+
+        if (startSec < 10)
+            Console.WriteLine($"{startMin}:0{startSec}");
+        else
+            Console.WriteLine($"{startMin}:{startSec}");
+
+        Thread.Sleep(1000);
     }
 }
 
